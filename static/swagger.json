@@ -1,0 +1,105 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Luma Video to 3D Conversion API",
+    "version": "1.0.0",
+    "description": "API for converting videos to 3D using Luma"
+  },
+  "host": "localhost:5000",
+  "basePath": "/",
+  "schemes": ["http"],
+  "paths": {
+    "/create_capture": {
+      "post": {
+        "summary": "Create a new capture",
+        "parameters": [
+          {
+            "name": "title",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Capture created successfully"
+          }
+        }
+      }
+    },
+    "/upload_file": {
+      "post": {
+        "summary": "Upload a file",
+        "parameters": [
+          {
+            "name": "upload_url",
+            "in": "formData",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "file",
+            "in": "formData",
+            "type": "file",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "File uploaded successfully"
+          }
+        }
+      }
+    },
+    "/trigger_processing": {
+      "post": {
+        "summary": "Trigger processing of the uploaded file",
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "slug": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Processing triggered successfully"
+          }
+        }
+      }
+    },
+    "/check_download": {
+      "get": {
+        "summary": "Check and download the processed capture",
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "query",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Capture status"
+          }
+        }
+      }
+    }
+  }
+}
