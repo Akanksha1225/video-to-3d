@@ -1,0 +1,6 @@
+Flask==2.0.1
+flask-restx==0.5.1
+requests==2.25.1
+werkzeug==2.0.1
+# Add lumaapi only if it's available for installation via pip
+lumaapi==0.0.2  # Replace x.x.x with the actual version if available
